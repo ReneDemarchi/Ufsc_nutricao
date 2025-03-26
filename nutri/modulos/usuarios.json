@@ -1,0 +1,105 @@
+{
+    "usuarios": [
+        {
+            "nome": "maria",
+            "idade": 26,
+            "sexo": "F",
+            "altura": 172,
+            "peso": 59,
+            "objetivo": "engordar",
+            "metasdiarios": {
+                "Calorias": "2500",
+                "Proteinas": "350",
+                "Carboidratos": "350",
+                "Gordura": "3500"
+            },
+            "macros_consumidos": {
+                "Calorias": 0,
+                "Proteinas": 0,
+                "Carboidratos": 0,
+                "Gordura": 0
+            },
+            "refeicao": "",
+            "historico": [],
+            "nivel": 1.2
+        },
+        {
+            "nome": "Rene",
+            "idade": 28,
+            "sexo": "M",
+            "altura": 197,
+            "peso": 82,
+            "objetivo": "engordar",
+            "metasdiarios": {
+                "Calorias": "3000",
+                "Proteinas": "150",
+                "Carboidratos": "150",
+                "Gordura": "150"
+            },
+            "macros_consumidos": {
+                "Calorias": 0,
+                "Proteinas": 0,
+                "Carboidratos": 0,
+                "Gordura": 0
+            },
+            "refeicao": "",
+            "historico": [
+                [
+                    "Almo\u00e7o",
+                    [
+                        [
+                            "ABACATE",
+                            100
+                        ]
+                    ]
+                ],
+                [
+                    "Janta",
+                    [
+                        [
+                            "ACHOCOLATADO EM P\u00d3",
+                            100
+                        ],
+                        [
+                            "LEITE",
+                            150
+                        ]
+                    ]
+                ],
+                [
+                    "teste",
+                    [
+                        [
+                            "CARNE",
+                            150
+                        ]
+                    ]
+                ]
+            ],
+            "nivel": 1.2
+        },
+        {
+            "nome": "Carlos",
+            "idade": 25,
+            "sexo": "M",
+            "altura": 178,
+            "peso": 96,
+            "objetivo": "engordar",
+            "metasdiarios": {
+                "Calorias": "",
+                "Proteinas": "023",
+                "Carboidratos": "62",
+                "Gordura": "82"
+            },
+            "macros_consumidos": {
+                "Calorias": 0,
+                "Proteinas": 0,
+                "Carboidratos": 0,
+                "Gordura": 0
+            },
+            "refeicao": "",
+            "historico": [],
+            "nivel": 1.2
+        }
+    ]
+}

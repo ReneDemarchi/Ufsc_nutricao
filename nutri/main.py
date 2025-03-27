@@ -1,13 +1,15 @@
 from modulos.usuario import Usuario,Usuario_feminino,carregar_usuario,salvar_usuario
-from modulos.alimento import Alimento,Refeicao
+from modulos.alimento import Alimento
 import json
 
 class app:
+    '''
+    intercafe do terminal
+    '''
     def __init__(self):
         self._usuario_selecionado = ''
         self._dados_indice = ''
     def inicio_menu(self):
-        print('---- Sejá bem vindo ao Programa de calculo nutricional ----')
         while True:
             print('     Para selecionar um usuario digite 1')
             print('     Para adicionar um usuario digite 2')
@@ -18,17 +20,28 @@ class app:
             if resposta_input == '1':
                 print('-----------------------------------------------------------')
                 resp = input('Digite o nome do Usuario :')
-                self.f_selecio_usuario(resp)
+                try:
+                    self.selecionar_usuario_ja_cadastrado(resp)
+                except:
+                    print('É preciso criar um usuario')
+                    self.interface_questionario_para_criar_usuario()
             elif resposta_input == '2':
-                self.f_menu_criar_usuario()
+                self.interface_questionario_para_criar_usuario()
                 return self.inicio_menu()
             elif resposta_input == '3':
-                break
+                print('-----------------------------------------------------------')
+                nome_alimento = str(input('Qual o nome do alimento ?'))
+                proteina = float(input('Quantidade de proteina em 100g :'))
+                gordura = float(input('Quantidade de gordura em 100g :'))
+                carboidrato = float(input('Quantidade de carboidrato em 100 g :'))
+                calorias = float(input('Quantidade de calorias em 100 g :'))
+                Alimento().adicionar_alimento_ao_json(nome_alimento,proteina,gordura,carboidrato,calorias)
+                print('Alimento cadastrado com sucesso!')
             elif resposta_input == '0':
                 break
             else:
                 print('Selecione uma opção valida')
-    def selec_menu(self):
+    def menu_usuario_selecionado(self):
         while True:
             print('-----------------------------------------------------------')
             print(f'Voce esta com o usuario {self._usuario_selecionado.get_nome()} Selecionado')
@@ -45,7 +58,7 @@ class app:
                 print('Qual o nome da refeição: ')
                 resp = input('R = ')
                 self._usuario_selecionado.criar_refeição(resp)
-                self.menu_refeicao()
+                self.menu_usuario_selecionado_refeicao_ativa()
             elif resp == '2':
                 print('-----------------------------------------------------------')
                 print(f' Usuario {self._usuario_selecionado.get_nome()}  Consumo x meta de macro nutriente')
@@ -87,7 +100,7 @@ Carboidrato:{self._usuario_selecionado.get_macros_consumidos_no_dia()['Carboidra
                 self._usuario_selecionado = ''
                 self._dados_indice = ''
                 return self.inicio_menu()
-    def menu_refeicao(self):
+    def menu_usuario_selecionado_refeicao_ativa(self):
         while True:
             print('-----------------------------------------------------------')
             print(f'Voce esta com o usuario {self._usuario_selecionado.get_nome()} Selecionado e na refeição {self._usuario_selecionado.get_refeicao()}')
@@ -98,11 +111,11 @@ Carboidrato:{self._usuario_selecionado.get_macros_consumidos_no_dia()['Carboidra
             print('             Para mostrar alimentos e quantidade já adicionada na refeição Digite 4')
             resp = input('Selecione uma opção das acima R: ')
             if resp == '1':
-                self.f_adicinar_alimento_na_refeição()
+                self.adicionar_alimento_na_refeicao()
             elif resp == '2':
                 print('-----------------------------------------------------------')
                 print(f'Segue os dados dos macros nutriente da refeição')
-                print(f'''1
+                print(f'''
 Usuario {self._usuario_selecionado.get_nome()}
 Calorias {self._usuario_selecionado._refeicao.get_calorias()}
 Gordura {self._usuario_selecionado._refeicao.get_gordura()}
@@ -120,7 +133,15 @@ Carboidrato {self._usuario_selecionado._refeicao.get_carboidrato()}
                 for i in self._usuario_selecionado._refeicao.get_historico():
                     a,q = i
                     print(f'Alimento {a}, quantidade {q}G')
-    def f_adicinar_alimento_na_refeição(self):
+    def adicionar_alimento_na_refeicao(self):
+        '''
+        Adiciona um alimento à refeição atual.
+
+        Procura no banco de dados por um alimento com o nome informado.
+        Se encontrado, busca os dados nutricionais e adiciona à refeição.
+        Caso não encontre, solicita os dados ao usuário, cadastra o novo alimento no banco
+        e então o adiciona à refeição.
+        '''
         print('-----------------------------------------------------------')
         print(
             f'Voce esta adiconando alimento na refeição:{self._usuario_selecionado.get_refeicao()} do usuario {self._usuario_selecionado.get_nome()}')
@@ -129,7 +150,8 @@ Carboidrato {self._usuario_selecionado._refeicao.get_carboidrato()}
         print('-----------------------------------------------------------')
         self._usuario_selecionado.adiciona_alimentos_na_refeicao(alimento_input, int(quantidade_em_gramas))
         print('Alimento adicionado na refeição, voce foi redirecionado para o menu da refeição')
-    def f_menu_criar_usuario(self):
+    def interface_questionario_para_criar_usuario(self):
+        '''Interface para criar usuario'''
         print('---------------- Vamos Criar um usuario da plataforma ------------- ')
         nome = input('Qual é o nome :')
         idade = int(input('Qual é o idade (numero inteiro):'))
@@ -177,8 +199,10 @@ Resposta = ''')
         with open('modulos/usuarios.json', "w") as arquivo:
             json.dump(dados, arquivo, indent=4)
         print('Voltamos para o menu inicial')
-    def f_selecio_usuario(self,nome):
+    def selecionar_usuario_ja_cadastrado(self,nome):
+        '''Set o usuario já existentem
+        armazena o conteudo do json mais e o indice do usuario no json'''
         self._usuario_selecionado,self._dados_indice = carregar_usuario(nome)
-        self.selec_menu()
+        self.menu_usuario_selecionado()
 
 teste = app().inicio_menu()

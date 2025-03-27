@@ -37,15 +37,15 @@
                 "Gordura": "150"
             },
             "macros_consumidos": {
-                "Calorias": 0,
-                "Proteinas": 0,
-                "Carboidratos": 0,
-                "Gordura": 0
+                "Calorias": 6727.0,
+                "Proteinas": 691.2,
+                "Carboidratos": 404.6,
+                "Gordura": 629.0
             },
             "refeicao": "",
             "historico": [
                 [
-                    "Almo\u00e7o",
+                    "Almoço",
                     [
                         [
                             "ABACATE",
@@ -57,7 +57,7 @@
                     "Janta",
                     [
                         [
-                            "ACHOCOLATADO EM P\u00d3",
+                            "ACHOCOLATADO EM PÓ",
                             100
                         ],
                         [
@@ -72,6 +72,32 @@
                         [
                             "CARNE",
                             150
+                        ]
+                    ]
+                ],
+                [
+                    "Almoço",
+                    [
+                        [
+                            "CARNE",
+                            250
+                        ],
+                        [
+                            "ABACATE",
+                            150
+                        ],
+                        [
+                            "MACARÃO",
+                            150
+                        ]
+                    ]
+                ],
+                [
+                    "janta",
+                    [
+                        [
+                            "OVELHA",
+                            1150
                         ]
                     ]
                 ]

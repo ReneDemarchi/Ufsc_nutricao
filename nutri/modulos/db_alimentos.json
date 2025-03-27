@@ -1511,6 +1511,20 @@
             "gordura": 15.0,
             "carboidrato": 26.0,
             "calorias": 250.0
+        },
+        {
+            "nome": "MACARÃO",
+            "proteina": 26.0,
+            "gordura": 23.0,
+            "carboidrato": 20.0,
+            "calorias": 60.0
+        },
+        {
+            "nome": "OVELHA",
+            "proteina": 25.0,
+            "gordura": 18.0,
+            "carboidrato": 0.0,
+            "calorias": 526.0
         }
     ]
 }
